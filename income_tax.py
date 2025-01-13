@@ -4,7 +4,6 @@ total_deductions = int(input("Enter your deductions:"))
 
 net_income = total_income - total_deductions
 
-
 print("\nNet Taxable Income: ", net_income)
 
 # Initialize excess_income
