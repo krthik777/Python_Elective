@@ -1,20 +1,18 @@
-initial_investment = float(input("Enter your initial investment amount (in INR): "))
-annual_interest_rate = float(input("Enter the annual interest rate (in percentage): "))
-years = int(input("Enter the number of years you want to invest: "))
+principal = float(input("Enter the initial investment amount: "))
+rate_of_interest = float(input("Enter the annual interest rate (in percentage): "))
+investment_period = int(input("Enter the number of years: "))
 
-interest_rate = annual_interest_rate / 100
-investment_value = initial_investment
+starting_amount = principal
+total_amount = principal
+rate_of_interest /= 100
 
-print("\nInvestment Report:")
-print("----------------------------")
+print("Year\tStarting_Amount\tInterest\tTotal_Amount")
+for year in range(1, investment_period + 1):
+    yearly_interest = round(rate_of_interest * starting_amount, 2)
+    total_amount += yearly_interest
+    print(f"{year}\t{starting_amount:.2f}\t\t{yearly_interest:.2f}\t\t{total_amount:.2f}")
+    starting_amount = total_amount
 
-for year in range(1, years + 1):
-    investment_value += investment_value * interest_rate
-    print("Year {}: ₹{:.2f}".format(year, investment_value))
-
-final_amount = investment_value
-growth = final_amount - initial_investment
-
-print("----------------------------")
-print("\nFinal Amount after {} years: ₹{:.2f}".format(years, final_amount))
-print("Total Growth: ₹{:.2f}".format(growth))
+print()
+print(f"The total amount after {investment_period} years is ₹{total_amount:.2f}")
+print(f"The total interest earned over {investment_period} years is ₹{total_amount - principal:.2f}")
